@@ -14,6 +14,6 @@ export default function Home() {
     }, []);
 
   return (
-    <p>{ JSON.stringify(message) }</p>
+    <p> { JSON.stringify(message) } </p>
   );
 }
