@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "docker compose up -d"
+    "start": "docker compose up -d"
   },
   "author": "",
   "license": "MIT",
