@@ -1,1 +1,1 @@
-# spring-2025-teaching
+# spring-2025-completed
