@@ -1,41 +1,53 @@
+/* This is the controller file. Its functions are called when 
+a route is navigated to. These functions in turn call upon the 
+database accessor to get the requested information out of the 
+database to return to the front end. */
+
 import Accessor from "../db_accessors/accessor.js";
 
 export default class Controller {
+    /* Function to get every single blog out of the database */
     static async getBlogs(req, res) {
         try {
-            const messages = await Accessor.getAllBlogs();
-            res.json(messages);
-            return messages;
+            const blogs = await Accessor.getAllBlogs();
+            res.json(blogs);
+            return blogs;
         } catch (e) {
-            console.log("Something bad happened due to:", e);
+            console.log("Failed due to:", e);
         }
     }
 
+    /* Function to add a new blog to the database */
     static async postBlog(req, res) {
         try {
-            await Accessor.postBlog(req.body);
-            res.redirect("/");
+            const blog = await Accessor.postBlog(req.body);
+            return blog;
         } catch (e) {
             console.log("Failed due to: ", e);
         }
     }
 
+    /* Function to change the body of a blog. 
+    The item to change is searched for by its unique id. */
     static async updateBlog(req, res) {
         try {
             const id = req.params._id;
             const updated_val = req.body;
             const updated_blog = await Accessor.updateBlogById(id, updated_val);
             res.json(updated_blog);
+            return updated_blog;
         } catch (e) {
             console.log("Failed due to:", e);
         }
     }
 
+    /* Function to delete a blog. The item to delete is
+    searched for by its unique id. */
     static async deleteBlog(req, res) {
         try {
             const id = req.params._id;
             const deletedBlog = await Accessor.deleteBlogById(id);
-            res.redirect("/");
+            return deletedBlog;
         } catch (e) {
             console.log("Failed due to:", e);
         }

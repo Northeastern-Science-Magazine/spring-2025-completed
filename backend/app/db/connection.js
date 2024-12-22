@@ -1,23 +1,28 @@
+/* This file is what allows our backend to connect to the database. 
+It takes in the specifications we set in the .env file (which is secret 
+and not pushed to github) and tries to create a connection the database. */
+
 import { config as dotenvConfig } from 'dotenv';
 import mongoose from 'mongoose';
 
 export default class Connection {
-    static async open(db) {
+    static async open() {
         try {
             dotenvConfig();
 
-            const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_HOSTNAME, MONGODB_PORT } = process.env;
-            const DATABASE_URL = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGODB_PORT}`;
-
-            mongoose.connect(DATABASE_URL, {
+            // get where to connect to the database
+            const { MONGODB_CONNECTION_STRING } = process.env;
+        
+            // try connecting
+            mongoose.connect(MONGODB_CONNECTION_STRING, {
                 maxPoolSize: 50,
                 socketTimeoutMS: 2500,
-                dbName: db
             });
 
+            // return the successful connection so it can be used elsewhere
             return mongoose.connection;
         } catch (e) {
-            console.log("Database failure")
+            console.log("Database connection failure");
         }
     }
 }
