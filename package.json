@@ -9,6 +9,6 @@
     "start-frontend": "cd frontend && npm run dev",
     "start-database": "cd database && npm start"
   },
-  "author": "",
+  "author": "Arushi Aggarwal",
   "license": "MIT"
 }

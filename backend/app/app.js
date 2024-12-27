@@ -1,3 +1,7 @@
+/* This file is what sets up some of the necessary packages and 
+then directs the backend to the routes file. Routes is where 
+information can be accessed from. */
+
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
