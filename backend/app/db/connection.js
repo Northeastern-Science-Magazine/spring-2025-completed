@@ -2,27 +2,23 @@
 It takes in the specifications we set in the .env file (which is secret 
 and not pushed to github) and tries to create a connection the database. */
 
-import { config as dotenvConfig } from 'dotenv';
-import mongoose from 'mongoose';
+import { config as dotenvConfig } from "dotenv";
+import mongoose from "mongoose";
 
 export default class Connection {
-    static async open() {
-        try {
-            dotenvConfig();
+  static async open() {
+    dotenvConfig();
 
-            // get where to connect to the database
-            const { MONGODB_CONNECTION_STRING } = process.env;
-        
-            // try connecting
-            mongoose.connect(MONGODB_CONNECTION_STRING, {
-                maxPoolSize: 50,
-                socketTimeoutMS: 2500,
-            });
+    // get where to connect to the database
+    const { MONGODB_CONNECTION_STRING } = process.env;
 
-            // return the successful connection so it can be used elsewhere
-            return mongoose.connection;
-        } catch (e) {
-            console.log("Database connection failure");
-        }
-    }
+    // try connecting
+    mongoose.connect(MONGODB_CONNECTION_STRING, {
+      maxPoolSize: 50,
+      socketTimeoutMS: 2500,
+    });
+
+    // return the successful connection so it can be used elsewhere
+    return mongoose.connection;
+  }
 }
