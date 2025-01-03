@@ -3,31 +3,16 @@ import React, { useEffect, useState } from 'react';
 import BlogCard from './BlogCard.jsx';
 
 const Blogs = () => {
-//   const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState([]);
 
-//     useEffect(() => {
-//         fetch('http://localhost:8001/home', {
-//             method: 'GET',
-//         })
-//             .then((response) => response.json())
-//             .then((data) => setBlogs(data))
-//             .catch((error) => console.error('Error fetching message:', error));
-//     }, []);
-
-    const blogs = [
-        {
-            "_id": "0000",
-            "title": "this is a title",
-            "author": "arushi",
-            "content": "blog!"
-        },
-        {
-            "_id": "0001",
-            "title": "this is also title",
-            "author": "ethan",
-            "content": "still a blog!"
-        }
-    ]
+    useEffect(() => {
+        fetch('http://localhost:8001/home', {
+            method: 'GET',
+        })
+            .then((response) => response.json())
+            .then((data) => setBlogs(data))
+            .catch((error) => console.error('Error fetching message:', error));
+    }, []);
 
   return (
     <div>

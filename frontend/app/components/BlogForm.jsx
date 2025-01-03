@@ -1,7 +1,41 @@
-import React from "react";
+import React, {useState} from "react";
 import * as Form from "@radix-ui/react-form";
 
 const BlogForm = () => {
+	const router = useRouter();
+
+	const [formData, setFormData] = useState({
+        title: '',
+        author: '',
+        content: '',
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+		console.log(JSON.stringify(formData));
+    };
+
+    const handleSubmit = async (e) => {
+        try {
+            const response = await fetch('http://localhost:8001/create-blog', {
+                method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setFormData({ title: '', author: '', content: '' });
+            } else {
+                const err = await response.json();
+                console.log(err);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
     return (
 	<Form.Root className="w-[260px]">
 		<Form.Field className="mb-2.5 grid" name="title">
@@ -12,7 +46,9 @@ const BlogForm = () => {
 			</div>
 			<Form.Control asChild>
 				<textarea
-					className="box-border inline-flex h-[35px] w-full resize-none items-center justify-center rounded bg-blackA2 px-2.5 text-[15px] leading-none"
+					className="box-border inline-flex h-[35px] w-full resize-none items-center justify-center rounded px-2.5 text-[15px] leading-none"
+					value={formData.title}
+					onChange={handleChange}
 					required
 				/>
 			</Form.Control>
@@ -25,12 +61,14 @@ const BlogForm = () => {
 			</div>
 			<Form.Control asChild>
 				<textarea
-					className="box-border inline-flex w-full resize-none items-center justify-center rounded bg-blackA2 p-2.5 text-[15px] leading-none"
+					className="box-border inline-flex w-full resize-none items-center justify-center rounded p-2.5 text-[15px] leading-none"
+					value={formData.author}
+					onChange={handleChange}
 					required
 				/>
 			</Form.Control>
 		</Form.Field>
-        <Form.Field className="mb-2.5 grid" name="blog-content">
+        <Form.Field className="mb-2.5 grid" name="content">
 			<div className="flex items-baseline justify-between">
 				<Form.Label className="text-[15px] font-medium leading-[35px]">
 					Blog Content
@@ -38,13 +76,15 @@ const BlogForm = () => {
 			</div>
 			<Form.Control asChild>
 				<textarea
-					className="box-border inline-flex w-full resize-none items-center justify-center rounded bg-blackA2 p-2.5 text-[15px] leading-none"
+					className="box-border inline-flex w-full resize-none items-center justify-center rounded p-2.5 text-[15px] leading-none"
+					value={formData.content}
+					onChange={handleChange}
 					required
 				/>
 			</Form.Control>
 		</Form.Field>
 		<Form.Submit asChild>
-			<button className="mt-2.5 box-border inline-flex h-[35px] w-full items-center justify-center px-[15px] font-medium leading-none">
+			<button onClick={handleSubmit} className="mt-2.5 box-border inline-flex h-[35px] w-full items-center justify-center px-[15px] font-medium leading-none outline-black">
 				Post Blog
 			</button>
 		</Form.Submit>
