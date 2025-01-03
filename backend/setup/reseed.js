@@ -1,6 +1,11 @@
 import data from "./data.js";
 import Connection from "../app/db/connection.js";
 
+/**
+ * NPM script that populates all records in the
+ * database for the collections given in data.js.
+ */
+
 try {
   Connection.open();
   for (const { model, seed } of data) {

@@ -1,5 +1,11 @@
 import Blog from "../app/models/blog.js";
 
+/**
+ * Seeding Data for MongoDB
+ *
+ * Each entry should have a model and seeding
+ * data for that model.
+ */
 export default [
   {
     model: Blog,

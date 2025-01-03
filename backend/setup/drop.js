@@ -1,6 +1,11 @@
 import data from "./data.js";
 import Connection from "../app/db/connection.js";
 
+/**
+ * NPM script that deletes all records in the database
+ * from the collections given in data.js.
+ */
+
 try {
   const models = data.map((data) => data.model);
   Connection.open();
