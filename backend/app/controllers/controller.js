@@ -28,7 +28,7 @@ export default class Controller {
         }
     }
 
-    /* Function to change the body of a blog. 
+  /* Function to change the body of a blog. 
     The item to change is searched for by its unique id. */
     static async updateBlog(req, res) {
         try {
@@ -42,7 +42,7 @@ export default class Controller {
         }
     }
 
-    /* Function to delete a blog. The item to delete is
+  /* Function to delete a blog. The item to delete is
     searched for by its unique id. */
     static async deleteBlog(req, res) {
         try {
