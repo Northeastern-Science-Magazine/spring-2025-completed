@@ -13,7 +13,7 @@ export default class Controller {
             res.json(blogs);
         } catch (e) {
             console.log("Failed due to:", e);
-            res.json({error: "error"});
+            res.json({error: e});
         }
     }
 
@@ -24,7 +24,7 @@ export default class Controller {
             res.json(blog);
         } catch (e) {
             console.log("Failed due to: ", e);
-            res.json({error: "error"});
+            res.json({error: e});
         }
     }
 
@@ -38,7 +38,7 @@ export default class Controller {
             res.json(updated_blog);
         } catch (e) {
             console.log("Failed due to:", e);
-            res.json({error: "error"});
+            res.json({error: e});
         }
     }
 
@@ -51,7 +51,7 @@ export default class Controller {
             res.json(deletedBlog);
         } catch (e) {
             console.log("Failed due to:", e);
-            res.json({error: "error"});
+            res.json({error: e});
         }
     }
 }
