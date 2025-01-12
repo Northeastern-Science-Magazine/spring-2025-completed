@@ -48,7 +48,7 @@ export default class Controller {
     searched for by its unique id. */
     static async deleteBlog(req, res) {
         try {
-            const id = req.params._id;
+            const id = req.params.id;
             const deletedBlog = await Accessor.deleteBlogById(id);
             return deletedBlog;
         } catch (e) {

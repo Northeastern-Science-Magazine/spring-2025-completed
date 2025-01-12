@@ -1,9 +1,8 @@
 import React, {useState} from "react";
 import * as Form from "@radix-ui/react-form";
 
-const BlogForm = () => {
-	const router = useRouter();
 
+const BlogForm = () => {
 	const [formData, setFormData] = useState({
         title: '',
         author: '',
@@ -13,26 +12,18 @@ const BlogForm = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
-		console.log(JSON.stringify(formData));
     };
 
     const handleSubmit = async (e) => {
-        try {
+        // try {
             const response = await fetch('http://localhost:8001/create-blog', {
                 method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
-
-            if (response.ok) {
-                setFormData({ title: '', author: '', content: '' });
-            } else {
-                const err = await response.json();
-                console.log(err);
-            }
-        } catch (error) {
-            console.log(error);
-        }
+        // } catch (error) {
+        //     alert("Failed due to:", error);
+        // }
     };
 
 
