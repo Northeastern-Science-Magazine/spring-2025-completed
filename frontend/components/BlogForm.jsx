@@ -37,7 +37,7 @@ const BlogForm = () => {
 			</div>
 			<Form.Control asChild>
 				<textarea
-					className="box-border inline-flex h-[35px] w-full resize-none items-center justify-center rounded px-2.5 text-[15px] leading-none"
+					className="box-border border-2 border-black inline-flex h-[35px] w-full resize-none items-center justify-center rounded px-2.5 text-[15px] leading-none"
 					value={formData.title}
 					onChange={handleChange}
 					required
@@ -52,7 +52,7 @@ const BlogForm = () => {
 			</div>
 			<Form.Control asChild>
 				<textarea
-					className="box-border inline-flex w-full resize-none items-center justify-center rounded p-2.5 text-[15px] leading-none"
+					className="box-border border-2 border-black inline-flex w-full resize-none items-center justify-center rounded p-2.5 text-[15px] leading-none"
 					value={formData.author}
 					onChange={handleChange}
 					required
@@ -67,7 +67,7 @@ const BlogForm = () => {
 			</div>
 			<Form.Control asChild>
 				<textarea
-					className="box-border inline-flex w-full resize-none items-center justify-center rounded p-2.5 text-[15px] leading-none"
+					className="box-border border-2 border-black inline-flex w-full resize-none items-center justify-center rounded p-2.5 text-[15px] leading-none"
 					value={formData.content}
 					onChange={handleChange}
 					required

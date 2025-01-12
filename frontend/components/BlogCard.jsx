@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { Card, Text, Avatar } from "@radix-ui/themes";
 
 /*
 This file represents the display of one unique blog.
@@ -17,13 +18,17 @@ export default function BlogCard({_id, title, author, content, editBlog, onDelet
     }
 
     return (
-        <div>
-            <p>{title}</p>
-            <p>By: {author}</p>
-            <p>{content}</p>
-            <button onClick={editBlog}>Edit</button>
-            <br></br>
-            <button onClick={deleteBlog}>Delete</button>
-        </div>   
-    )
+        <Card size = "3" color="purple">
+            <Flex gap="5" align="center">
+                <Text>{title}</Text>
+                <Text>By: {author}</Text>
+                <Text>{content}</Text>
+                <Flex>
+                    <button onClick={editBlog}>Edit</button>
+                    <br></br>
+                    <button onClick={deleteBlog}>Delete</button>
+                </Flex>
+            </Flex>
+        </Card>  
+    );
 }
