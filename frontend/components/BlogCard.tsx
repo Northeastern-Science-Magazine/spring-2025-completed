@@ -1,5 +1,6 @@
 "use client";
 import React, { ChangeEvent, useState } from "react";
+import { Card } from "@radix-ui/themes";
 
 /*
 This file represents the display of one unique blog.
@@ -16,7 +17,13 @@ export interface BlogCardProps extends Blog {
   onDelete: (_id: string) => void;
 }
 
-export default function BlogCard({ _id, title, author, content, onDelete }: BlogCardProps) {
+export default function BlogCard({
+  _id,
+  title,
+  author,
+  content,
+  onDelete,
+}: BlogCardProps) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [stateContent, setStateContent] = useState(content);
 
@@ -48,8 +55,8 @@ export default function BlogCard({ _id, title, author, content, onDelete }: Blog
   };
 
   return (
-    <div>
-      <p>{title}</p>
+    <Card size="3">
+      <p className="text-blue-300">{title}</p>
       <p>By: {author}</p>
       {isEditMode ? (
         <>
@@ -65,6 +72,6 @@ export default function BlogCard({ _id, title, author, content, onDelete }: Blog
 
       <br></br>
       <button onClick={deleteBlog}>Delete</button>
-    </div>
+    </Card>
   );
 }

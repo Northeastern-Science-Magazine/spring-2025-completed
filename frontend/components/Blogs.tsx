@@ -20,7 +20,7 @@ const Blogs = () => {
 
   return (
     <div>
-      <h1>Blogs</h1>
+      <p className="text-pink-300 text-3xl">Blogs</p>
       <div>
         {blogs.length > 0 ? (
           blogs.map((blog: Blog, index) => (
