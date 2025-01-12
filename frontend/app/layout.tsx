@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import NavBar from "../components/NavBar.jsx";
+import NavBar from "../components/NavBar";
 
 /*
 This file is the entry point for our frontend, this means the website 
@@ -13,7 +13,6 @@ so we set it up here to ensure the same instance is present everywhere.
 The server automatically sends layout.tsx a react component to use as the 
 "children" which is what it also displays.
 */
-
 
 export const metadata: Metadata = {
   title: "My Blog",

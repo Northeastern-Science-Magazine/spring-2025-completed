@@ -22,6 +22,16 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/NavBar.jsx", "components/BlogForm.jsx", "components/Blogs.jsx", "components/EditBlog.jsx", "components/BlogCard.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "components/NavBar.tsx",
+    "components/BlogForm.tsx",
+    "components/Blogs.jsx",
+    "components/EditBlog.jsx",
+    "components/BlogCard.jsx"
+  ],
   "exclude": ["node_modules"]
 }

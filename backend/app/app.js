@@ -18,5 +18,4 @@ app.use(express.json());
 
 app.use("/", defaultRouter);
 
-
 export default app;
