@@ -24,7 +24,11 @@ export default class Accessor {
   static async updateBlogById(id, updatedContent) {
     await Connection.open();
     // ensure that the update still matches the schema and return the updated blog instead of the original
-    const blog = await Blog.findByIdAndUpdate(id, { content: updatedContent }, { runValidators: true, returnDocument: "after" });
+    const blog = await Blog.findByIdAndUpdate(
+      id,
+      { content: updatedContent },
+      { new: true }
+    );
     return blog;
   }
 
