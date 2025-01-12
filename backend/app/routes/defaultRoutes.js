@@ -9,7 +9,11 @@ import Controller from "../controllers/controller.js";
 const router = express.Router();
 
 router.route("/").get((req, res) => {
-  res.status(200).json({ message: "Successfully connected to the NU Sci teaching project!" });
+  res
+    .status(200)
+    .json({
+      message: "Successfully connected to the NU Sci teaching project!",
+    });
 });
 
 router.route("/all-blogs").get(Controller.getBlogs);

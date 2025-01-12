@@ -14,7 +14,6 @@ The server automatically sends layout.tsx a react component to use as the
 "children" which is what it also displays.
 */
 
-
 export const metadata: Metadata = {
   title: "My Blog",
   description: "Full tutorial",
