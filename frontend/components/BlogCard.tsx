@@ -18,23 +18,23 @@ export interface BlogCardProps extends Blog {
 
 export default function BlogCard({ _id, title, author, content, onDelete }: BlogCardProps) {
   const [isEditMode, setIsEditMode] = useState(false);
-  const [newContent, setNewContent] = useState(content);
+  const [stateContent, setStateContent] = useState(content);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setNewContent(event.target.value);
+    setStateContent(event.target.value);
   };
 
   const saveBlog = async () => {
     await fetch(`http://localhost:8001/update-blog/${_id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: newContent }),
+      body: JSON.stringify({ content: stateContent }),
     });
 
     setIsEditMode(false);
   };
 
-  const onEdit = () => {
+  const editBlog = () => {
     setIsEditMode(true);
   };
 
@@ -53,13 +53,13 @@ export default function BlogCard({ _id, title, author, content, onDelete }: Blog
       <p>By: {author}</p>
       {isEditMode ? (
         <>
-          <input type="text" value={newContent} onChange={handleChange} />
+          <input type="text" value={stateContent} onChange={handleChange} />
           <button onClick={saveBlog}>Save</button>
         </>
       ) : (
         <>
-          <p>{newContent}</p>
-          <button onClick={onEdit}>Edit</button>
+          <p>{stateContent}</p>
+          <button onClick={editBlog}>Edit</button>
         </>
       )}
 
