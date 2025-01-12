@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Blogs from "../components/Blogs.jsx";
+import React from "react";
+import Blogs from "../components/Blogs";
 
 /*
 This is the default react component sent to the layout.tsx file, 

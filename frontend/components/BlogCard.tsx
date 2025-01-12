@@ -1,19 +1,30 @@
 "use client";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 
 /*
 This file represents the display of one unique blog.
 There are two buttons as well (edit and delete), which execute those backend routes.
 */
-export default function BlogCard({ _id, title, author, content, onDelete }) {
+export interface Blog {
+  _id: string;
+  title: string;
+  author: string;
+  content: string;
+}
+
+export interface BlogCardProps extends Blog {
+  onDelete: (_id: string) => void;
+}
+
+export default function BlogCard({ _id, title, author, content, onDelete }: BlogCardProps) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [newContent, setNewContent] = useState(content);
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNewContent(event.target.value);
   };
 
-  const saveBlog = async (event) => {
+  const saveBlog = async () => {
     await fetch(`http://localhost:8001/update-blog/${_id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -23,11 +34,11 @@ export default function BlogCard({ _id, title, author, content, onDelete }) {
     setIsEditMode(false);
   };
 
-  const onEdit = (event) => {
+  const onEdit = () => {
     setIsEditMode(true);
   };
 
-  const deleteBlog = async (event) => {
+  const deleteBlog = async () => {
     await fetch(`http://localhost:8001/delete-blog/${_id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },

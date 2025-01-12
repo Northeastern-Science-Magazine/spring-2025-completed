@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import NavBar from "../components/NavBar.jsx";
+import NavBar from "../components/NavBar";
 
 /*
 This file is the entry point for our frontend, this means the website 

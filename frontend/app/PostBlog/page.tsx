@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import BlogForm from '../../components/BlogForm.jsx';
+import React from "react";
+import BlogForm from "../../components/BlogForm";
 
 /*
 This is the page.tsx endpoint for the BlogForm, which is 
@@ -10,7 +10,5 @@ to pass layout.tsx
 */
 
 export default function Home() {
-  return (
-    <BlogForm />
-  );
+  return <BlogForm />;
 }

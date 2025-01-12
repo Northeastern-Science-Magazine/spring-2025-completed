@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import * as Form from "@radix-ui/react-form";
 
 const BlogForm = () => {
@@ -8,13 +8,13 @@ const BlogForm = () => {
     content: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    const response = await fetch("http://localhost:8001/create-blog", {
+  const handleSubmit = async () => {
+    await fetch("http://localhost:8001/create-blog", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -25,9 +25,7 @@ const BlogForm = () => {
     <Form.Root className="w-[260px]">
       <Form.Field className="mb-2.5 grid" name="title">
         <div className="flex items-baseline justify-between">
-          <Form.Label className="text-[15px] font-medium leading-[35px]">
-            Title
-          </Form.Label>
+          <Form.Label className="text-[15px] font-medium leading-[35px]">Title</Form.Label>
         </div>
         <Form.Control asChild>
           <textarea
@@ -40,9 +38,7 @@ const BlogForm = () => {
       </Form.Field>
       <Form.Field className="mb-2.5 grid" name="author">
         <div className="flex items-baseline justify-between">
-          <Form.Label className="text-[15px] font-medium leading-[35px]">
-            Author
-          </Form.Label>
+          <Form.Label className="text-[15px] font-medium leading-[35px]">Author</Form.Label>
         </div>
         <Form.Control asChild>
           <textarea
@@ -55,9 +51,7 @@ const BlogForm = () => {
       </Form.Field>
       <Form.Field className="mb-2.5 grid" name="content">
         <div className="flex items-baseline justify-between">
-          <Form.Label className="text-[15px] font-medium leading-[35px]">
-            Blog Content
-          </Form.Label>
+          <Form.Label className="text-[15px] font-medium leading-[35px]">Blog Content</Form.Label>
         </div>
         <Form.Control asChild>
           <textarea
