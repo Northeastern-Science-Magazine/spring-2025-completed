@@ -11,7 +11,6 @@ export default class Controller {
         try {
             const blogs = await Accessor.getAllBlogs();
             res.json(blogs);
-            return blogs;
         } catch (e) {
             console.log("Failed due to:", e);
             res.json({error: "error"});
@@ -22,7 +21,7 @@ export default class Controller {
     static async postBlog(req, res) {
         try {
             const blog = await Accessor.postBlog(req.body);
-            return blog;
+            res.json(blog);
         } catch (e) {
             console.log("Failed due to: ", e);
             res.json({error: "error"});
@@ -37,7 +36,6 @@ export default class Controller {
             const updated_val = req.body;
             const updated_blog = await Accessor.updateBlogById(id, updated_val);
             res.json(updated_blog);
-            return updated_blog;
         } catch (e) {
             console.log("Failed due to:", e);
             res.json({error: "error"});
@@ -50,7 +48,7 @@ export default class Controller {
         try {
             const id = req.params.id;
             const deletedBlog = await Accessor.deleteBlogById(id);
-            return deletedBlog;
+            res.json(deletedBlog);
         } catch (e) {
             console.log("Failed due to:", e);
             res.json({error: "error"});

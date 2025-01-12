@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 /*
@@ -11,7 +12,7 @@ export default function BlogCard({_id, title, author, content, editBlog, onDelet
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
         });
-        
+
         onDelete(_id);
     }
 
